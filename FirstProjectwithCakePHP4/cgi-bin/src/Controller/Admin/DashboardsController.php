@@ -10,7 +10,8 @@ class DashboardsController extends AppController{
     }
 
     public function index(){
-        
+        $this->set('title', "Admin Dashboards | Academics Management");
+
     }
 }
 ?>
