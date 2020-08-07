@@ -43,6 +43,10 @@ use Cake\Routing\RouteBuilder;
  */
 /** @var \Cake\Routing\RouteBuilder $routes */
 $routes->setRouteClass(DashedRoute::class);
+/* Application Routes */
+$routes->prefix("admin", function (RouteBuilder $route){
+    $route->connect("/", ["controller" => "Dashboards", "action" => "index"]);
+});
 
 $routes->scope('/', function (RouteBuilder $builder) {
     /*
