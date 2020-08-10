@@ -63,6 +63,12 @@
         //"/dist/js/demo.js",
     ]);
 ?>
+<?=
+  $this->fetch("bottomScriptLinks")
+?>
+<?=
+  $this->fetch("scipt")
+?>
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <!-- <script>
