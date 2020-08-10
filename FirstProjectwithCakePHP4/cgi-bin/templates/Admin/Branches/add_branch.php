@@ -3,6 +3,12 @@
         $this->assign("title", $title);
     }
 ?>
+<?=
+    $this->Html->css([
+        "pickmeup.css"
+    ], ["block" => "TopStyleLinks"])
+?>
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -68,13 +74,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Session Start Date*</label>
-                            <input type="date" name="start_date" id="start_date" class="form-control"/>
+                            <input type="date" name="start_date" id="start_date" class="form-control" required/>
                         </div>
                     </div> 
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Session End Date*</label>
-                            <input type="date" name="end_date" id="end_date" class="form-control"/>
+                            <input type="date" name="end_date" id="end_date" class="form-control" required/>
                         </div>
                     </div>
                 </div>
@@ -117,11 +123,15 @@
 <!-- /.content -->
 <?=
     $this->Html->script([
-        "jquery.validate.min.js"
+        "jquery.validate.min.js",
+        // "pickmeup.js",
+        // "pickmeup.min.js"
     ],["block" => "bottomScriptLinks"])
 ?>
 <?php
     $this->Html->scriptStart(["block" => true]);
     echo '$("#frm-add-branch").validate();';
+    // echo 'pickmeup("input#start_date", {hide_on_select: true, position: "right"});';
+    // echo 'pickmeup("input#end_date", {hide_on_select: true, position: "right"});';
     $this->Html->scriptEnd();
 ?>

@@ -14,6 +14,7 @@
       "/plugins/jqvmap/jqvmap.min.css",
       "/dist/css/adminlte.min.css",
       "/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
+      // "jquery.toolbars.css",
       //"/plugins/daterangepicker/daterangepicker.css",
       //"/plugins/summernote/summernote-bs4.css",
   ]);?>
@@ -22,6 +23,10 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <?=
+    $this->fetch("TopStyleLinks")
+  ?>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -55,12 +60,14 @@
         //"/plugins/jquery-knob/jquery.knob.min.js",
         //"/plugins/moment/moment.min.js",
         //"/plugins/daterangepicker/daterangepicker.js",
-        "/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js",
+        // "/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js",
         "/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
         //"/plugins/summernote/summernote-bs4.min.js",
         "/dist/js/adminlte.js",
         "/dist/js/pages/dashboard.js",
         //"/dist/js/demo.js",
+        // "/js/jquery.toolbar.js",
+        // "jquery.toolbar.min.js",
     ]);
 ?>
 <?=
