@@ -124,14 +124,14 @@
 <?=
     $this->Html->script([
         "jquery.validate.min.js",
-        // "pickmeup.js",
+        "pickmeup.js",
         // "pickmeup.min.js"
     ],["block" => "bottomScriptLinks"])
 ?>
 <?php
     $this->Html->scriptStart(["block" => true]);
     echo '$("#frm-add-branch").validate();';
-    // echo 'pickmeup("input#start_date", {hide_on_select: true, position: "right"});';
-    // echo 'pickmeup("input#end_date", {hide_on_select: true, position: "right"});';
+    echo 'pickmeup("input#start_date", {hide_on_select: true, position: "right"});';
+    echo 'pickmeup("input#end_date", {hide_on_select: true, position: "right"});';
     $this->Html->scriptEnd();
 ?>

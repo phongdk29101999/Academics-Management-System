@@ -4,6 +4,11 @@
  * @author  Stefan Petre <www.eyecon.ro>
  * @license 0BSD
  */
+$(document).ready(function(){
+	$('#end_date').focus(function(){
+		$('#show-table').css('display','inline-block');
+	})
+});
 
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
@@ -942,6 +947,7 @@
 			}
 			if (!options.flat) {
 				dom_remove_class(root_element, 'pmu-hidden');
+				
 				if (options.position instanceof Function) {
 					position = options.position.call(target);
 					left     = position.left;

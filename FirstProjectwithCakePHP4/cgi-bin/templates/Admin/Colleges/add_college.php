@@ -49,18 +49,18 @@
                 </div>
                 </div>
                 <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                    <label>Description</label>
-                    <textarea class="form-control" name="description" id="description" placeholder="Enter text"></textarea>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" name="description" id="description" placeholder="Enter text"></textarea>
+                        </div>
+                    </div> 
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                        <label>Localtion*</label>
+                        <textarea class="form-control" name="location" id="location" placeholder="Enter Location" required></textarea>
+                        </div>
                     </div>
-                </div> 
-                <div class="col-sm-6">
-                    <div class="form-group">
-                    <label>Localtion*</label>
-                    <textarea class="form-control" name="location" id="location" placeholder="Enter Location" required></textarea>
-                    </div>
-                </div>
                 </div>
                 <div class="row">
                 <div class="col-sm-6">
