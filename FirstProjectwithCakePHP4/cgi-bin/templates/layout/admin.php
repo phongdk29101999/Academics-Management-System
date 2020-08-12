@@ -65,7 +65,7 @@
         "/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
         //"/plugins/summernote/summernote-bs4.min.js",
         "/dist/js/adminlte.js",
-        "/dist/js/pages/dashboard.js",
+        // "/dist/js/pages/dashboard.js",
         //"/dist/js/demo.js",
         // "/js/jquery.toolbar.js",
         // "jquery.toolbar.min.js",
@@ -75,7 +75,7 @@
   $this->fetch("bottomScriptLinks")
 ?>
 <?=
-  $this->fetch("scipt")
+  $this->fetch("script")
 ?>
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

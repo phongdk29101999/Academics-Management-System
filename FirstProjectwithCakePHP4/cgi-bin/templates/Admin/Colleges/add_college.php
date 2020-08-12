@@ -3,6 +3,11 @@
         $this->assign("title", $title);
     }
 ?>
+<style>
+    #frm-add-college label.error {
+        color: red;
+    }
+</style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">

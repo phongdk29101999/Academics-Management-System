@@ -8,7 +8,11 @@
         "pickmeup.css"
     ], ["block" => "TopStyleLinks"])
 ?>
-
+<style>
+    #frm-add-branch label.error {
+        color: red;
+    }
+</style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -74,13 +78,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Session Start Date*</label>
-                            <input type="date" name="start_date" id="start_date" class="form-control" required/>
+                            <input type="text" name="start_date" id="start_date" class="form-control" required/>
                         </div>
                     </div> 
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Session End Date*</label>
-                            <input type="date" name="end_date" id="end_date" class="form-control" required/>
+                            <input type="text" name="end_date" id="end_date" class="form-control" required/>
                         </div>
                     </div>
                 </div>
@@ -131,7 +135,7 @@
 <?php
     $this->Html->scriptStart(["block" => true]);
     echo '$("#frm-add-branch").validate();';
-    echo 'pickmeup("input#start_date", {hide_on_select: true, position: "right"});';
-    echo 'pickmeup("input#end_date", {hide_on_select: true, position: "right"});';
+    echo 'pickmeup("input#start_date", {hide_on_select: true, position: "bottom"});';
+    echo 'pickmeup("input#end_date", {hide_on_select: true, position: "bottom"});';
     $this->Html->scriptEnd();
 ?>

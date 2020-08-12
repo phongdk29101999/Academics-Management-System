@@ -3,7 +3,16 @@
         $this->assign("title", $title);
     }
 ?>
-
+<?=
+    $this->Html->css([
+        "pickmeup.css"
+    ], ["block" => "TopStyleLinks"])
+?>
+<style>
+    #frm-add-staff label.error {
+        color: red;
+    }
+</style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -123,7 +132,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Date of Birth*</label>
-                            <input type="date" name="dob" id="dob" class="form-control" required/>
+                            <input type="text" name="dob" id="dob" class="form-control" required/>
                         </div>
                     </div>
                 </div>
@@ -161,14 +170,13 @@
 <?=
     $this->Html->script([
         "jquery.validate.min.js",
-        // "pickmeup.js",
+        "pickmeup.js",
         // "pickmeup.min.js"
     ],["block" => "bottomScriptLinks"])
 ?>
 <?php
     $this->Html->scriptStart(["block" => true]);
-    echo '$("#frm-add-student").validate();';
-    // echo 'pickmeup("input#start_date", {hide_on_select: true, position: "right"});';
-    // echo 'pickmeup("input#end_date", {hide_on_select: true, position: "right"});';
+    echo '$("#frm-add-staff").validate();';
+    echo 'pickmeup("input#dob", {hide_on_select: true, position: "bottom"});';
     $this->Html->scriptEnd();
 ?>
