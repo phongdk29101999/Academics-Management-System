@@ -1,5 +1,5 @@
 <?php
-namespace App\Model;
+namespace App\Model\Table;
 use Cake\ORM\Table;
 
 class StaffsTable extends Table{
