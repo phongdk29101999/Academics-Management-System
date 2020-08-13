@@ -4,7 +4,8 @@
     }
     $this->Html->css([
         "/plugins/datatables-bs4/css/dataTables.bootstrap4.css",
-        "/css/buttons.dataTables.min.css",
+        "buttons.dataTables.min.css",
+        // "jquery.dataTables.min.css",
     ], ["block" => "TopStyleLinks"]);
 ?>
 
@@ -13,12 +14,12 @@
     <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-        <h3>List Colleges</h3 >
+        <h3>Colleges Report</h3 >
         </div>
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">List Colleges</li>
+            <li class="breadcrumb-item active">Colleges Report</li>
         </ol>
         </div>
     </div>
@@ -34,11 +35,11 @@
         <!-- general form elements disabled -->
         <div class="card card-secondary">
             <div class="card-header">
-            <h3 class="card-title">List Colleges</h3>
+            <h3 class="card-title">Colleges Report</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="tbl-colleges" class="table table-bordered table-striped">
+              <table id="tbl-college-report" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                     <th>#ID</th>
@@ -76,16 +77,17 @@
     $this->Html->script([
         "/plugins/datatables/jquery.dataTables.js",
         "/plugins/datatables-bs4/js/dataTables.bootstrap4.js",
-        "/js/buttons.html5.min.js",
-        "/js/dataTables.buttons.min.js",
-        "/js/jszip.min.js",
-        "/js/pdfmake.min.js",
-        "/js/vfs_fonts.js",
+        // "jquery-3.5.1.js",
+        "dataTables.buttons.min.js",
+        "jszip.min.js",
+        "pdfmake.min.js",
+        "vfs_fonts.js",
+        "buttons.html5.min.js",
     ],["block" => "bottomScriptLinks"])
 ?>
 <?php
     $this->Html->scriptStart(["block" => true]);
-    echo "$('#tbl-colleges').DataTable({
+    echo "$('#tbl-college-report').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5',
