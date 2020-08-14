@@ -35,6 +35,7 @@ class BranchesController extends AppController{
     public function listBranches(){
         $branches = $this->Branches->find()
             ->select([
+                "id", 
                 "name",
                 "college_id",
                 "start_date",
@@ -50,11 +51,36 @@ class BranchesController extends AppController{
     }
 
     public function editBranch($id = null){
+        $branch = $this->Branches->get($id, [
+            "contain" => []
+        ]);
+        if ($this->request->is(['post', 'put', 'patch'])) {
+            $branchData = $this->request->getData();
+            $branch = $this->Branches->patchEntity($branch, $branchData);
+
+            if ($this->Branches->save($branch))
+            {
+                $this->Flash->success("Branch has been updated successfully");
+                return $this->redirect(["action" => "listBranches"]);
+            } else {
+                $this->Flash->error("Failed to update Branch"); 
+            }
+        }
+        $colleges = $this->Colleges->find()->select(["id", "name"])->toList();
+        $this->set(compact("branch", "colleges"));
         $this->set('title', "Edit Branch | Academics Management");
     }
 
     public function deleteBranch($id = null){
+        $this->request->allowMethod(['post', 'delete']);
 
+        $branch = $this->Branches->get($id);
+        if ($this->Branches->delete($branch)) {
+            $this->Flash->success("Branch has been deleted successfully");
+        } else {
+            $this->Flash->error("Failed to delete  Branch"); 
+        }
+        return $this->redirect(["action" => "listBranches"]);
     }
 }
 ?>
