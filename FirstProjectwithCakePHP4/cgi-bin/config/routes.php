@@ -80,6 +80,7 @@ Router::prefix("admin", function (RouteBuilder $route){
 
     $route->connect("/allot-college", ["controller" => "Students", "action" => "getCollegeBranches"]);
     $route->connect("/assign-college-branch", ["controller" => "Students", "action" => "assignCollegeBranch"]);
+    $route->connect("/remove-assigned-college/:id", ["controller" => "Students", "action" => "removeAssignedCollegeBranch"], ["pass" => ["id"]]);
 });
 
 $routes->scope('/', function (RouteBuilder $builder) {

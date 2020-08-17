@@ -123,6 +123,6 @@ class Application extends BaseApplication
 
         // Load more plugins here
         // src/Application.php
-        // $this->addPlugin('DebugKit');
+        $this->addPlugin('DebugKit');
     }
 }

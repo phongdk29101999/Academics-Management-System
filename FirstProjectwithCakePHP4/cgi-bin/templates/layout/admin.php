@@ -71,7 +71,7 @@
         //"/dist/js/demo.js",
         // "/js/jquery.toolbar.js",
         // "jquery.toolbar.min.js",
-        // "/debug_kit/js/toolbar.js"
+        "/debug_kit/js/toolbar.js"
     ]);
 ?>
 <?=

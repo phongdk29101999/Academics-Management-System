@@ -63,7 +63,25 @@
                                                     <?= "<b>BG: </b>".$student->blood_group?>
                                                 </td>
                                                 <td>
+                                                    <?php 
+                                                        if (isset($student->student_college->name) && isset($student->student_branch->name)) {
+                                                            echo "<b>College: </b>".$student->student_college->name;
+                                                            echo "<br>";
+                                                            echo "<b>Branch: </b>".$student->student_branch->name;
+                                                            echo"<br>";
+                                                    ?>
+                                                    <form action="<?= $this->Url->build('/admin/remove-assigned-college/'.$student->id, ['fullBase' => true])?>" method="post" id="frm-remove-allot-<?= $student->id?>">
+                                                            <input type="hidden" name="student_id" value="<?= $student->id?>">
+                                                    </form>
+                                                    <a href="javascript:void(0)" class="btn-allot-modal" data-id="<?= $student->id?>" data-toggle="modal" data-target="#mdl-allot-college">Change</a> | 
+                                                        <a href="javascript:void(0)" onclick="if(confirm('Are you sure want to remove?')){ $('#frm-remove-allot-<?= $student->id?>').submit() }" class="link-remove-college-branch" >Remove</a>
+                                                    <?php
+                                                        } else {
+                                                    ?>
                                                     <button class="btn btn-info btn-allot-modal" data-id="<?= $student->id?>" data-toggle="modal" data-target="#mdl-allot-college">Allot College</button>
+                                                    <?php            
+                                                        }
+                                                    ?>
                                                 </td>
                                                 <td><?= strtoupper($student->gender)?></td>
                                                 <td>
@@ -124,11 +142,11 @@
             <!-- Modal body -->
             <div class="modal-body">
              
-                <form id="frm-allot-college" method="post " action="<?= $this->Url->build('/admin/assign-college-branch', ['fullBase' => true])?>">
+                <form id="frm-allot-college" method="post" action="<?= $this->Url->build('/admin/assign-college-branch', ['fullBase' => true])?>">
                     <input type="hidden" id="student_id" name="student_id" value="">
                     <div class="form-group">
                         <label>Select College:</label>
-                        <select name="college_id " id="dd_college" class="form-control">
+                        <select name="college_id" id="dd_college" class="form-control">
                             <option value="">Choose College</option>
                             <?php
                                 if (count($colleges)>0) {
@@ -141,10 +159,13 @@
                             ?>
                         </select>
                     </div>
-                    <div class="form-grou p">
+                    <div class="form-group">
                         <label>Select Branch:</label>
                         <select name="branch_id" id="dd_branch" class="form-control">
                             <option value="">Choose Branch</option>
+                            <?php
+                                
+                            ?>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -157,40 +178,7 @@
 <?=
     $this->Html->script([
         "/plugins/datatables/jquery.dataTables.js",
-        "/plugins/datatables-bs4/js/dataTables.bootstrap4.js"
+        "/plugins/datatables-bs4/js/dataTables.bootstrap4.js",
+        "/js/students.js"
     ],["block" => "bottomScriptLinks"])
-?>
-<?php
-    $this->Html->scriptStart(["block" => true]);
-    echo '$("#tbl-students").DataTable();';
-
-    // click event
-    echo '$(document).on("click", ".btn-allot-modal", function(){
-        var student_id = $(this).attr("data-id");
-        $("#student_id").val(student_id);
-    });';
-    
-    //ajax request - on Change
-    echo '$(document).on("change", "#dd_college", function(){
-        var college_id = $(this).val();
-        var postdata = "college_id="+college_id;
-        $.get("'.$this->Url->build("/admin/allot-college", ["fullBase" => true]).'", postdata, function(response){
-            
-            var data = $.parseJSON(response);
-            
-            if(data.status){
-                
-                var branchHtml = "";
-                
-                $.each(data.branches, function(index, item){
-                    
-                    branchHtml += "<option value=\'"+item.id+"\'>"+item.name+"</option>";
-                    
-                });
-                
-                $("#dd_branch").append(branchHtml);
-            }
-        }); 
-    });';
-    $this->Html->scriptEnd();
 ?>
