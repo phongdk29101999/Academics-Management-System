@@ -67,31 +67,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Phone No*</label>
-                                        <input type="text" name="phone_no " id="phone_no " placeholder="Enter Phone No" class="form-control" required/>
+                                        <input type="text" name="phone_no" id="phone_no" placeholder="Enter Phone No" class="form-control" required/>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                     <label>Address*</label>
                                     <textarea class="form-control" name="address" id="address" placeholder="Enter Address" required></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Select College*</label>
-                                        <select class="form-control" name="college_id" id="college_id" required>
-                                            <option value="1">Sample College</option>
-                                        </select>
-                                    </div>
-                                </div> 
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Select Branch*</label>
-                                        <select class="form-control" name="branch_id" id="branch_id" required>
-                                            <option value="1">Sample Branch</option>
-                                        </select>
                                     </div>
                                 </div>
                             </div>

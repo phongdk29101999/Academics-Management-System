@@ -52,7 +52,7 @@
                             <tbody>
                                 <?php
                                     if (count($students)>0) {
-                                        foreach ($students as $index => $student)
+                                        foreach ($students as $index => $student) {
                                 ?>
                                             <tr>
                                                 <td><?= $student->id?></td>
@@ -63,12 +63,12 @@
                                                     <?= "<b>BG: </b>".$student->blood_group?>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-info">Allot College</button>
+                                                    <button class="btn btn-info btn-allot-modal" data-id="<?= $student->id?>" data-toggle="modal" data-target="#mdl-allot-college">Allot College</button>
                                                 </td>
                                                 <td><?= strtoupper($student->gender)?></td>
                                                 <td>
                                                     <?=
-                                                        $this->Html->image($student->profile_name, [
+                                                        $this->Html->image("/".$student->profile_image, [
                                                             "style" => "width:70px;height:70px;"
                                                         ])
                                                     ?>
@@ -85,6 +85,7 @@
                                                 </td>
                                             </tr>
                                 <?php
+                                        }
                                     }
                                 ?>
                             </tbody>
@@ -110,6 +111,49 @@
     </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+<!-- The Modal -->
+<div class="modal" id="mdl-allot-college">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Assign College/Branch</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+             
+                <form id="frm-allot-college" method="post " action="<?= $this->Url->build('/admin/assign-college-branch', ['fullBase' => true])?>">
+                    <input type="hidden" id="student_id" name="student_id" value="">
+                    <div class="form-group">
+                        <label>Select College:</label>
+                        <select name="college_id " id="dd_college" class="form-control">
+                            <option value="">Choose College</option>
+                            <?php
+                                if (count($colleges)>0) {
+                                    foreach ($colleges as $index => $college) {
+                            ?>
+                                <option value="<?= $college->id?>"><?= $college->name?></option>
+                            <?php            
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-grou p">
+                        <label>Select Branch:</label>
+                        <select name="branch_id" id="dd_branch" class="form-control">
+                            <option value="">Choose Branch</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div> 
+        </div>
+    </div>
+</div>
+<!--/.model-->
 <?=
     $this->Html->script([
         "/plugins/datatables/jquery.dataTables.js",
@@ -119,5 +163,34 @@
 <?php
     $this->Html->scriptStart(["block" => true]);
     echo '$("#tbl-students").DataTable();';
+
+    // click event
+    echo '$(document).on("click", ".btn-allot-modal", function(){
+        var student_id = $(this).attr("data-id");
+        $("#student_id").val(student_id);
+    });';
+    
+    //ajax request - on Change
+    echo '$(document).on("change", "#dd_college", function(){
+        var college_id = $(this).val();
+        var postdata = "college_id="+college_id;
+        $.get("'.$this->Url->build("/admin/allot-college", ["fullBase" => true]).'", postdata, function(response){
+            
+            var data = $.parseJSON(response);
+            
+            if(data.status){
+                
+                var branchHtml = "";
+                
+                $.each(data.branches, function(index, item){
+                    
+                    branchHtml += "<option value=\'"+item.id+"\'>"+item.name+"</option>";
+                    
+                });
+                
+                $("#dd_branch").append(branchHtml);
+            }
+        }); 
+    });';
     $this->Html->scriptEnd();
 ?>

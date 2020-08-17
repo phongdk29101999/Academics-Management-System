@@ -14,6 +14,7 @@
       "/plugins/jqvmap/jqvmap.min.css",
       "/dist/css/adminlte.min.css",
       "/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
+      // "/debug_kit/css/toolbar.css",
       // "jquery.toolbars.css",
       //"/plugins/daterangepicker/daterangepicker.css",
       //"/plugins/summernote/summernote-bs4.css",
@@ -70,6 +71,7 @@
         //"/dist/js/demo.js",
         // "/js/jquery.toolbar.js",
         // "jquery.toolbar.min.js",
+        // "/debug_kit/js/toolbar.js"
     ]);
 ?>
 <?=

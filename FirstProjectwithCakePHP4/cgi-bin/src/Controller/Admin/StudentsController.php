@@ -7,6 +7,8 @@ class StudentsController extends AppController{
     {
         parent::initialize();
         $this->loadModel("Students");
+        $this->loadModel("Colleges");
+        $this->loadModel("Branches");
         $this->viewBuilder()->setLayout("admin");
     }
 
@@ -41,14 +43,15 @@ class StudentsController extends AppController{
 
     public function listStudents(){
         $students = $this->Students->find()->contain([
-            "student_college" => function($q){
+            "studentCollege" => function($q){
                 return $q->select(["id", "name"]);
             },
-            "student_branch" => function($q){
+            "studentBranch" => function($q){
                 return $q->select(["id", "name"]);
             }
         ])->toList();
-        $this->set(compact("students"));
+        $colleges = $this->Colleges->find()->select(["id", "name"])->toList();
+        $this->set(compact("students", "colleges"));
         $this->set('title', "List Students | Academics Management");
     }
 
@@ -58,6 +61,44 @@ class StudentsController extends AppController{
 
     public function deleteStudent($id = null){
 
+    }
+
+    public function getCollegeBranches(){
+        $this->autoRender = false;
+        $college_id = $this->request->getQuery("college_id");
+        $branches = $this->Branches->find()
+            ->select([
+                "id", 
+                "name",
+            ])
+            ->where([
+                "college_id" => $college_id,
+            ])
+            ->toList();
+        echo json_encode(array(
+            "status" => 1,
+            "message" => "Branches found",
+            "branches" => $branches, 
+        ));
+    }
+
+    public function assignCollegeBranch(){
+        if ($this->request->is("post")) {
+            $student_id = $this->request->getData("student_id");
+            $student = $this->Students->get($student_id, [
+                "contain" => [],
+            ]);
+            $studentData = $this->request->getData();
+            $student = $this->Students->patchEntity($student, $studentData);
+
+            if ($this->Students->save($student))
+            {
+                $this->Flash->success("College Branch assigned successfully to student");
+            } else {
+                $this->Flash->error("Failed to assign to college/branch");
+            }
+            return $this->redirect(["action" => "listStudents"]); 
+        }
     }
 }
 ?>

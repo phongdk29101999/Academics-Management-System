@@ -122,5 +122,7 @@ class Application extends BaseApplication
         $this->addPlugin('Migrations');
 
         // Load more plugins here
+        // src/Application.php
+        // $this->addPlugin('DebugKit');
     }
 }

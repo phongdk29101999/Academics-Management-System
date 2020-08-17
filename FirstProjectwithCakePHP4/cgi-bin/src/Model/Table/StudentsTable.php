@@ -6,12 +6,12 @@ class StudentsTable extends Table{
     public function initialize(array $config): void
     {
         $this->setTable("tbl_students");
-        $this->belongsTo("student_college", [
-            "classname" => "Colleges",
+        $this->belongsTo("studentCollege", [
+            "className" => "Colleges",
             "foreignKey" => "college_id",
         ]);
-        $this->belongsTo("student_branch", [
-            "classname" => "Branches",
+        $this->belongsTo("studentBranch", [
+            "className" => "Branches",
             "foreignKey" => "branch_id",
         ]);
     }

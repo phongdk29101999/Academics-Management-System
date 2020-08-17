@@ -78,6 +78,8 @@ Router::prefix("admin", function (RouteBuilder $route){
     $route->connect("/student-report", ["controller" => "Reports", "action" => "studentReport"]);
     $route->connect("/staff-report", ["controller" => "Reports", "action" => "staffReport"]);
 
+    $route->connect("/allot-college", ["controller" => "Students", "action" => "getCollegeBranches"]);
+    $route->connect("/assign-college-branch", ["controller" => "Students", "action" => "assignCollegeBranch"]);
 });
 
 $routes->scope('/', function (RouteBuilder $builder) {
