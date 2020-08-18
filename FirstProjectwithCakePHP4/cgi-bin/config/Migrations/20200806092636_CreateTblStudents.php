@@ -41,12 +41,12 @@ class CreateTblStudents extends AbstractMigration
         $table->addColumn('college_id', 'integer', [
             'default' => null,
             'limit' => 5,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('branch_id', 'integer', [
             'default' => null,
             'limit' => 5,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('address', 'text', [
             'default' => null,
