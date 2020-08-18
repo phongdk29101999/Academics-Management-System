@@ -49,11 +49,61 @@
                     <th>Gender</th>
                     <th>Profile Image</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                
+                    <?php
+                        if (count($staffs)>0) {
+                            foreach ($staffs as $index => $staff) {
+                                
+                    ?>
+                    <tr>
+                        <td><?=$staff->id?></td>
+                        <td>
+                            <?php
+                                echo "<b>Name: </b>".$staff->name;
+                                echo "<br>";
+                                echo "<b>Email: </b>".$staff->email;
+                                echo "<br>";
+                                echo "<b>PhoneNo: </b>".$staff->phone_no;
+                                echo "<br>";
+                                echo "<b>Blood Group: </b>".$staff->blood_group;
+                                echo "<br>";
+                                echo "<b>Staff Type: </b>".$staff->staff_type;
+                                echo "<br>";
+                                echo "<b>Designation: </b>".$staff->designation;
+                                echo "<br>";
+                            ?>
+                        </td>
+                        <td>
+                            <?php 
+                                if (isset($staff->staff_college->name) && isset($staff->staff_branch->name)) {
+                                    echo "<b>College: </b>".$staff->staff_college->name;
+                                    echo "<br>";
+                                    echo "<b>Branch: </b>".$staff->staff_branch->name;
+                                    echo"<br>";
+                                } else {
+                                    echo "<i>N/A</i>";
+                                }
+                            ?>
+                        </td>
+                        <td><?= $staff->designation?></td>
+                        <td><?= strtoupper($staff->gender)?></td>
+                        <td>
+                            <?= 
+                                $this->Html->image("/".$staff->profile_image, [
+                                    "style" => "width:70px;height:70px;",
+                                ])
+                            ?>
+                        </td>
+                        <td>
+                            <?= $staff->status == 1 ? "<button class='btn btn-success'>Active</button>" : "<button class='btn btn-danger'>Inactive</button>" ?>
+                        </td>
+                    </tr>
+                    <?php
+                            }
+                        }
+                    ?>
                 </tbody>
                 <tfoot>
                 <tr>
@@ -64,7 +114,6 @@
                     <th>Gender</th>
                     <th>Profile Image</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
                 </tfoot>
               </table>

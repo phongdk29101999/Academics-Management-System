@@ -70,7 +70,7 @@
                                                             echo "<b>Branch: </b>".$student->student_branch->name;
                                                             echo"<br>";
                                                     ?>
-                                                    <form action="<?= $this->Url->build('/admin/remove-assigned-college/'.$student->id, ['fullBase' => true])?>" method="post" id="frm-remove-allot-<?= $student->id?>">
+                                                    <form action="<?= $this->Url->build('/admin/remove-assigned-college-student/'.$student->id, ['fullBase' => true])?>" method="post" id="frm-remove-allot-<?= $student->id?>">
                                                             <input type="hidden" name="student_id" value="<?= $student->id?>">
                                                     </form>
                                                     <a href="javascript:void(0)" class="btn-allot-modal" data-id="<?= $student->id?>" data-toggle="modal" data-target="#mdl-allot-college">Change</a> | 
@@ -95,7 +95,7 @@
                                                     <?= $student->status == 1 ? "<button class='btn btn-success'>Active</button>" : "<button class='btn btn-danger'>Inactive</button>"?>
                                                 </td>
                                                 <td>
-                                                <form id="frm-delete-student-<?= $student->id?>" action="<?= $this->Url->build('/admin/delete-student/'.$student->id)?>" method="post">
+                                                    <form id="frm-delete-student-<?= $student->id?>" action="<?= $this->Url->build('/admin/delete-student/'.$student->id)?>" method="post">
                                                         <input type="hidden" name="id" value="<?= $student->id?>"/>
                                                     </form>
                                                     <a class="btn btn-warning" href="<?= $this->Url->build('/admin/edit-student/'.$student->id, ['fullBase' => true])?>"><i class="fa fa-pencil-alt"></i></a>
@@ -142,7 +142,7 @@
             <!-- Modal body -->
             <div class="modal-body">
              
-                <form id="frm-allot-college" method="post" action="<?= $this->Url->build('/admin/assign-college-branch', ['fullBase' => true])?>">
+                <form id="frm-allot-college" method="post" action="<?= $this->Url->build('/admin/assign-college-branch-student', ['fullBase' => true])?>">
                     <input type="hidden" id="student_id" name="student_id" value="">
                     <div class="form-group">
                         <label>Select College:</label>

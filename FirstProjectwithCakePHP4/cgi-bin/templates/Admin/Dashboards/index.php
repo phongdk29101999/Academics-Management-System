@@ -30,7 +30,7 @@ if (!empty($title)){
         <!-- small box -->
         <div class="small-box bg-dark">
           <div class="inner">
-            <h3>0</h3>
+            <h3><?= $collegeCount?></h3>
 
             <p>Total Colleges</p>
           </div>
@@ -45,9 +45,9 @@ if (!empty($title)){
         <!-- small box -->
         <div class="small-box bg-dark">
           <div class="inner">
-            <h3>0</h3>
+            <h3><?= $studentCount?></h3>
 
-            <p>Total Student</p>
+            <p>Total Students</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -60,9 +60,9 @@ if (!empty($title)){
         <!-- small box -->
         <div class="small-box bg-dark">
           <div class="inner">
-            <h3>0</h3>
+            <h3><?= $staffCount?></h3>
 
-            <p>Total Staff</p>
+            <p>Total Staffs</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>

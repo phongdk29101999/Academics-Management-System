@@ -47,7 +47,9 @@ use Cake\Routing\Router;
 $routes->setRouteClass(DashedRoute::class);
 /* Application Routes */
 Router::prefix("admin", function (RouteBuilder $route){
-    $route->connect("/", ["controller" => "Dashboards", "action" => "index"]);
+    // $route->connect("/", ["controller" => "Dashboards", "action" => "index"]);
+
+    $route->connect("/", ["controller" => "Users", "action" => "login"]);
 
     //college routes
     $route->connect("/add-college", ["controller" => "Colleges", "action" => "addCollege"]);
@@ -79,8 +81,12 @@ Router::prefix("admin", function (RouteBuilder $route){
     $route->connect("/staff-report", ["controller" => "Reports", "action" => "staffReport"]);
 
     $route->connect("/allot-college", ["controller" => "Students", "action" => "getCollegeBranches"]);
-    $route->connect("/assign-college-branch", ["controller" => "Students", "action" => "assignCollegeBranch"]);
-    $route->connect("/remove-assigned-college/:id", ["controller" => "Students", "action" => "removeAssignedCollegeBranch"], ["pass" => ["id"]]);
+
+    $route->connect("/assign-college-branch-student", ["controller" => "Students", "action" => "assignCollegeBranch"]);
+    $route->connect("/remove-assigned-college-student/:id", ["controller" => "Students", "action" => "removeAssignedCollegeBranch"], ["pass" => ["id"]]);
+
+    $route->connect("/assign-college-branch-staff", ["controller" => "Staffs", "action" => "assignCollegeBranch"]);
+    $route->connect("/remove-assigned-college-staff/:id", ["controller" => "Staffs", "action" => "removeAssignedCollegeBranch"], ["pass" => ["id"]]);
 });
 
 $routes->scope('/', function (RouteBuilder $builder) {

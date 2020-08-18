@@ -49,11 +49,49 @@
                     <th>Gender</th>
                     <th>Profile Image</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                
+                    <?php
+                        if (count($students)>0) {
+                            foreach ($students as $index => $student) {
+                    ?>
+                                <tr>
+                                    <td><?= $student->id?></td>
+                                    <td>
+                                        <?= "<b>Name: </b>".$student->name?><br>
+                                        <?= "<b>Email: </b>".$student->email?><br>
+                                        <?= "<b>PhoneNo: </b>".$student->phone_no?><br>
+                                        <?= "<b>BG: </b>".$student->blood_group?>
+                                    </td>
+                                    <td>
+                                        <?php 
+                                            if (isset($student->student_college->name) && isset($student->student_branch->name)) {
+                                                echo "<b>College: </b>".$student->student_college->name;
+                                                echo "<br>";
+                                                echo "<b>Branch: </b>".$student->student_branch->name;
+                                                echo"<br>";
+                                            } else {
+                                                echo "<i>N?/A</i>";
+                                            }
+                                        ?>
+                                    </td>
+                                    <td><?= strtoupper($student->gender)?></td>
+                                    <td>
+                                        <?=
+                                            $this->Html->image("/".$student->profile_image, [
+                                                "style" => "width:70px;height:70px;"
+                                            ])
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?= $student->status == 1 ? "<button class='btn btn-success'>Active</button>" : "<button class='btn btn-danger'>Inactive</button>"?>
+                                    </td>        
+                                </tr>
+                    <?php
+                            }
+                        }
+                    ?>
                 </tbody>
                 <tfoot>
                 <tr>
@@ -63,7 +101,6 @@
                     <th>Gender</th>
                     <th>Profile Image</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
                 </tfoot>
               </table>

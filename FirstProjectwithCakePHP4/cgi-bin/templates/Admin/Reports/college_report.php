@@ -12,64 +12,80 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
-    <div class="row mb-2">
-        <div class="col-sm-6">
-        <h3>Colleges Report</h3 >
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h3>Colleges Report</h3 >
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Colleges Report</li>
+                </ol>
+            </div>
         </div>
-        <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Colleges Report</li>
-        </ol>
-        </div>
-    </div>
     </div><!-- /.container-fluid -->
 </section>
 
 <!-- Main content -->
 <section class="content"> 
     <div class="container-fluid">
-    <div class="row">
-        <!-- left column -->
-        <div class="col-md-12">  
-        <!-- general form elements disabled -->
-        <div class="card card-secondary">
-            <div class="card-header">
-            <h3 class="card-title">Colleges Report</h3>
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">  
+                <!-- general form elements disabled -->
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Colleges Report</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="tbl-college-report" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#ID</th>
+                                    <th>College Info</th>
+                                    <th>Short Name</th>
+                                    <th>Cover Image</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    if (count($colleges)>0)
+                                    {
+                                        foreach($colleges as $index => $college){
+                                ?>
+                                            <tr>
+                                                <td><?= $college->id?></td>
+                                                <td><?= "<b>Name: </b>".$college->name."<br><b>mail: </b>".$college->email."<br><b>PhoneNo: </b>".$college->contact_number ?></td>
+                                                <td><?= $college->short_name?></td> 
+                                                <td><?= $this->Html->image("/".$college->cover_image, ["style" => "width:70px;height:70px;"])?></td>
+                                                <td>
+                                                    <?= $college->status == 1 ? "<button class='btn btn-success'>Active</button>" : "<button class='btn btn-danger'>Inactive</button>" ?>
+                                                </td>
+                                            </tr>
+                                <?php
+                                        }
+                                    }
+                                ?>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>#ID</th>
+                                    <th>College Info</th>
+                                    <th>Short Name</th>
+                                    <th>Cover Image</th>
+                                    <th>Status</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.card -->
             </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="tbl-college-report" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th>#ID</th>
-                    <th>College Info</th>
-                    <th>Short Name</th>
-                    <th>Cover Image</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th>#ID</th>
-                    <th>College Info</th>
-                    <th>Short Name</th>
-                    <th>Cover Image</th>
-                    <th>Action</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
+            <!--/.col (left) -->
         </div>
-        <!-- /.card -->
-
-        </div>
-        <!--/.col (left) -->
-    </div>
-    <!-- /.row -->
+        <!-- /.row -->
     </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->

@@ -3,6 +3,13 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 class User extends Entity{
-    protected $_accessible = [];
+    protected $_accessible = [
+        "name" => true,
+        "email" => true,
+        "phone_no" => true,
+        "password" => true,
+        "status" => true,
+        "create_at" => true,
+    ];
 }
 ?>
