@@ -47,9 +47,12 @@ use Cake\Routing\Router;
 $routes->setRouteClass(DashedRoute::class);
 /* Application Routes */
 Router::prefix("admin", function (RouteBuilder $route){
-    // $route->connect("/", ["controller" => "Dashboards", "action" => "index"]);
+    $route->connect("/", ["controller" => "Dashboards", "action" => "index"]);
 
-    $route->connect("/", ["controller" => "Users", "action" => "login"]);
+    $route->connect("/login", ["controller" => "Users", "action" => "login"]);
+    $route->connect("/users/dashboard", ["controller" => "Dashboards", "action" => "index"]);
+    $route->connect("/users/logout", ["controller" => "Users", "action" => "logout"]);
+
 
     //college routes
     $route->connect("/add-college", ["controller" => "Colleges", "action" => "addCollege"]);

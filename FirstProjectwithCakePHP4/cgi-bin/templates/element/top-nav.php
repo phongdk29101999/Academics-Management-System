@@ -10,7 +10,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">Logout</a>
+          <a href="<?= $this->Url->build('/admin/users/logout', ['fullBase' => true])?>" class="dropdown-item dropdown-footer">Logout</a>
         </div>
       </li>
     </ul>

@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\Event\EventInterface;
 
 /**
  * Application Controller
@@ -51,7 +52,7 @@ class AppController extends Controller
         //$this->loadComponent('FormProtection');
 
         //load auth component
-        $this->loadComponent("auth", [
+        $this->loadComponent("Auth", [
             "authenticate" => [
                 "Form" => [
                     "fields" => [
@@ -61,14 +62,14 @@ class AppController extends Controller
                     "userModel" => "Users",
                 ]
             ],
-            "loginAction" => [
+            "loginAction" => [ 
                 "controller" => "Users",
                 "action" => "login",
                 "prefix" => "Admin",
             ],
             "loginRedirect" => [
-                "controller" => "Users",
-                "action" => "dashboard",
+                "controller" => "Dashboards",
+                "action" => "index",
                 "prefix" => "Admin",
             ],
             "logoutRedirect" => [
@@ -77,5 +78,10 @@ class AppController extends Controller
                 "prefix" => "Admin",
             ]
         ]);
+    }
+
+    public function beforeRender(EventInterface $event)
+    {
+        $this->set("Auth", $this->Auth->user());
     }
 }

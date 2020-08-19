@@ -25,7 +25,7 @@
         ?>
         </div>
         <div class="info">
-          <a href="#" class="d-block">Kim Phong</a>
+          <a href="#" class="d-block"><b><?= $Auth['name']?></b><br><?= $Auth['email']?></a>
         </div>
       </div>
 
@@ -175,7 +175,7 @@
             <!-- ./reports -->
             <!-- logout -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= $this->Url->build('/admin/users/logout', ['fullBase' => true])?>" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>
                     Logout
