@@ -5,6 +5,7 @@ app_local.php
 logs
 vendor
 tmp
+cgi-bin/config/Migrations/schema-dump-default.lock
 
 # OS generated files #
 ######################
